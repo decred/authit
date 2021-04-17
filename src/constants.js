@@ -13,3 +13,8 @@ export const DCRDATA_URL =
 // Tabs
 export const FileTab = 0;
 export const HashTab = 1;
+
+// Dcrtime error to formatted UI error
+export const ERROR_MAP = {
+  "Invalid Digests array": "Invalid hashes, please check your search inputs"
+};

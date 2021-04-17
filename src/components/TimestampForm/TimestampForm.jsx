@@ -21,7 +21,7 @@ const TimestampForm = ({ history }) => {
       .concat(hs.map(hash => hash.digest));
     const names = files.map(file => file.name);
     history.push(
-      `results#digests=${digests.toString()}&names=${names.toString()}&timestamp=true`
+      `results#hashes=${digests.toString()}&names=${names.toString()}&timestamp=true`
     );
   };
 

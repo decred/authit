@@ -6,8 +6,9 @@ import {
   handleVerify,
   handleTimestamp
 } from "src/helpers/dcrtime";
+import { ERROR_MAP } from "src/constants";
 
-const useProcessDigests = location => {
+const useProcessDigests = hash => {
   const [digests, setDigests] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -37,14 +38,15 @@ const useProcessDigests = location => {
         }
         setLoading(false);
       } catch (e) {
-        setError(e);
+        const parsedError = JSON.parse(e).error;
+        setError(ERROR_MAP[parsedError]);
       }
     }
 
-    const { data, shouldTimestamp } = processQueryData(location.hash);
+    const { data, shouldTimestamp } = processQueryData(hash);
 
     handleProcessDigests(data, shouldTimestamp);
-  }, [location.hash]);
+  }, [hash]);
 
   return { digests, loading, error };
 };

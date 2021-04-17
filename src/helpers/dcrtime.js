@@ -26,7 +26,7 @@ export const handleTimestamp = async data => {
 // Helper functions
 export const mergeDigestsAndResult = (digests, res) =>
   digests.map(ds => {
-    const result = res.digests.find(d => ds.digest === d.digest);
+    const result = res.digests?.find(d => ds.digest === d.digest);
     return {
       ...ds,
       ...result

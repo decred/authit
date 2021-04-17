@@ -1,12 +1,12 @@
 import React from "react";
 import TimestampForm from "src/components/TimestampForm";
-import ModalNewDigestInfo from "src/components/ModalNewDigestInfo";
+import ModalNewHashInfo from "src/components/ModalNewHashInfo";
 import Page from "src/components/Layout/Page";
 import Title from "src/components/Title";
 
 const Timestamp = () => (
   <Page>
-    <Title title="Create new digest" modal={ModalNewDigestInfo} />
+    <Title title="Create new hash" modal={ModalNewHashInfo} />
     <TimestampForm />
   </Page>
 );

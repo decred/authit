@@ -15,13 +15,16 @@ const Header = ({ history }) => {
         <BoxTextInput
           name="search"
           value={query}
-          placeholder="Search for digest"
+          placeholder="Search for hashes"
           searchInput={true}
           rounded={true}
           inputClassName={styles.searchInput}
           className={styles.searchBox}
           onChange={e => setQuery(e.target.value)}
-          onSubmit={() => history.push(`results#digests=${query}`)}
+          onSubmit={() => {
+            history.push(`results#hashes=${query}`);
+            window.location.reload();
+          }}
         />
       </div>
     </HeaderUI>

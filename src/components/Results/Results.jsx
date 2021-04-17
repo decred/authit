@@ -7,22 +7,22 @@ import useProcessDigests from "./hooks";
 import styles from "./Results.module.css";
 
 const Results = ({ location }) => {
-  const { digests, loading, error } = useProcessDigests(location);
+  const { digests, loading, error } = useProcessDigests(location.hash);
 
   if (error) throw error;
 
   const getStatusTag = useCallback(digest => {
-    function renderStatusTag(text, type) {
-      return <StatusTag text={text} type={type} className={styles.resultTag} />;
-    }
+    const renderStatusTag = (text, type) => (
+      <StatusTag text={text} type={type} className={styles.resultTag} />
+    );
 
     if (isDigestAnchored(digest)) {
-      return renderStatusTag("Anchored", "greenCheck");
+      return renderStatusTag("Timestamped", "greenCheck");
     }
     if (isDigestAnchorPending(digest)) {
       return renderStatusTag("Pending", "bluePending");
     }
-    return renderStatusTag("Not Anchored", "orangeNegativeCircled");
+    return renderStatusTag("Not Found", "orangeNegativeCircled");
   }, []);
 
   return loading && !error ? (

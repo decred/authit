@@ -9,18 +9,18 @@ export const updateDigests = (digests, newDigests) =>
 
 export const processQueryData = locationHash => {
   const {
-    digests: strDigests,
+    hashes: strHashes,
     names: strNames,
     timestamp: strTimestamp
   } = qs.parse(locationHash);
 
-  const digests = strDigests.split(",");
+  const hashes = strHashes.split(",");
   const names = strNames ? strNames.split(",") : [];
   const shouldTimestamp = strTimestamp === "true";
 
   // file names are set from the query param if existent otherwise the
   // digest is used as the name
-  const data = digests.map((d, i) => ({
+  const data = hashes.map((d, i) => ({
     // check for file names in localstorage
     name: getDigestName(d) || names[i] || d,
     digest: d
